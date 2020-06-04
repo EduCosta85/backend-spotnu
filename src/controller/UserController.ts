@@ -27,4 +27,20 @@ export class UserController {
       res.status(err.errorCode || 400).send({ message: err.message });
     }
   }
+
+  async adminSignup(req: Request, res: Response) {
+    try {
+      const result = await UserController.UserBusiness.adminSignup(
+        req.body.name,
+        req.body.nickname,
+        req.body.email,
+        req.body.password,
+        req.body.role,
+        req.headers.auth as string
+      );
+      res.status(200).send(result);
+    } catch (err) {
+      res.status(err.errorCode || 400).send({ message: err.message });
+    }
+  }
 }

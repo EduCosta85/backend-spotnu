@@ -4,6 +4,7 @@ import { IdGenerator } from "../services/idGenerator";
 import { HashGenerator } from "../services/hashGenerator";
 import { TokenGenerator } from "../services/tokenGenerator";
 import { InvalidParameterError } from "../errors/InvalidParameterError";
+import { UnauthorizedError } from "../errors/UnauthorizedError";
 
 export class UserBusiness {
   constructor(
@@ -11,7 +12,7 @@ export class UserBusiness {
     private hashGenerator: HashGenerator,
     private tokenGenerator: TokenGenerator,
     private idGenerator: IdGenerator
-  ) {}
+  ) { }
 
   public async userSignup(
     name: string,
@@ -47,4 +48,21 @@ export class UserBusiness {
     return { accessToken };
   }
 
+  public async adminSignup(
+    name: string,
+    nickname: string,
+    email: string,
+    password: string,
+    role: string,
+    token: string
+  ) {
+
+    const userData = this.tokenGenerator.verify(token)
+    console.log(userData)
+    if (userData.role != "ADMIN") {
+      throw new UnauthorizedError("You need to be ADMIN to create other admin user.")
+    }
+
+    return this.userSignup(name, nickname, email, password, role)
+  }
 }
