@@ -1,8 +1,9 @@
 import express from "express";
 import cors from "cors";
 import {AddressInfo} from "net";
-import { userRouter } from "./router/UserRouter";
 import dotenv from "dotenv";
+import { userRouter } from "./router/UserRouter";
+import { genreRouter } from "./router/GenreRouter";
 
 dotenv.config();
 const app = express();
@@ -20,3 +21,4 @@ const server = app.listen(process.env.PORT || 3000, () => {
 });
 
 app.use("/users/", userRouter);
+app.use("/genres/", genreRouter);

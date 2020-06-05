@@ -2,12 +2,12 @@ import { InvalidParameterError } from "../errors/InvalidParameterError";
 
 export class User {
   constructor(
-    private id: string,
-    private name: string,
-    private nickName: string,
-    private email: string,
-    private password: string,
-    private role: UserRole
+    protected id: string,
+    protected name: string,
+    protected nickName: string,
+    protected email: string,
+    protected password: string,
+    protected role: UserRole
   ) {}
 
   public getId(): string {
@@ -43,8 +43,8 @@ export const stringToUserRole = (input: string): UserRole => {
       return UserRole.PREMIUM;
     case "ADMIN":
       return UserRole.ADMIN;
-    case "BAND":
-      return UserRole.BAND;
+      case "BAND":
+        return UserRole.BAND;
     default:
       throw new InvalidParameterError("Invalid user role");
   }
@@ -54,5 +54,5 @@ export enum UserRole {
   USER = "USER",
   PREMIUM = "PREMIUM",
   ADMIN = "ADMIN",
-  BAND = "BAND",
+  BAND = "BAND"
 }
