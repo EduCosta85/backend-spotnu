@@ -24,4 +24,10 @@ export class GenreBusiness {
     await this.GenreDatabase.createGenre(id, name)
   }
 
+  public async getAllGenres(): Promise<any> {
+    
+    const result = await this.GenreDatabase.getAllGenres()
+    return result
+  }
+
 }

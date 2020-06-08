@@ -25,4 +25,13 @@ export class GenreController {
     }
   }
 
+  async getAllGenres(req: Request, res: Response) {
+    try {
+      const result = await GenreController.GenreBusiness.getAllGenres();
+      res.status(200).send(result);
+    } catch (err) {
+      res.status(err.errorCode || 400).send({ message: err.message });
+    }
+  }
+
 }
