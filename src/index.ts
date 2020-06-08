@@ -1,15 +1,21 @@
 import express from "express";
+import dotenv from "dotenv";
+import statusMonitor from 'express-status-monitor'
+import helmet from 'helmet'
+import compression from "compression";
 import cors from "cors";
 import {AddressInfo} from "net";
-import dotenv from "dotenv";
 import { userRouter } from "./router/UserRouter";
 import { genreRouter } from "./router/GenreRouter";
 
 dotenv.config();
 const app = express();
-app.use(express.json());
 
+app.use(helmet())
+app.use(compression())
+app.use(express.json());
 app.use(cors());
+app.use(statusMonitor({ path: '/monitor'}))
 
 const server = app.listen(process.env.PORT || 3000, () => {
   if (server) {
