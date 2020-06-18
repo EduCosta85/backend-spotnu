@@ -1,0 +1,42 @@
+{
+  "name": "backend-spotnu-eduardo",
+  "version": "1.0.0",
+  "description": "backend for spotnu aplication - final challenge for backend module - Labenu fullstack bootcamp - Sagan / Eduardo",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./node_modules/jest/bin/jest.js",
+    "start": "ts-node-dev ./src/index.ts",
+    "start:dev": " ts-node-dev ./src/index.ts"
+  },
+  "author": "Eduardo Costa",
+  "license": "ISC",
+  "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/compression": "^1.7.0",
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.6",
+    "@types/express-status-monitor": "^1.2.1",
+    "@types/helmet": "0.0.47",
+    "@types/jest": "^25.2.3",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/knex": "^0.16.1",
+    "@types/uuid": "^7.0.3",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-status-monitor": "^1.3.3",
+    "helmet": "^3.22.0",
+    "jest": "^26.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.1",
+    "mysql": "^2.18.1",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.2",
+    "uuid": "^8.0.0"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.44"
+  }
+}
